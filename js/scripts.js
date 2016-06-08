@@ -5,29 +5,45 @@
 // For words that begin with a single consonant, the program should move the first consonant to the end of the word, then add "ay".
 
 // Pig Latin Business (or back-end) logic:
+
+//Set Global Variable
 var result = [];
 
+//Check if letter is a vowel
+var checkIfVowel = function (letter) {
+  var vowels = ['a', 'e', 'i', 'o', 'u'];
+  for (i=0; i<vowels.length; i++) {
+    if (letter === vowels[i]) {
+      return true
+    }
+  }
+};
+
+//Translate a single word to pig latin
 var wordTranslator = function(word) {
 
   var wordArray = word.split("");
 
+  //checking for words that begin with "qu"
   if (wordArray[0] === "q" && wordArray[1] === "u") {
     wordArray.push(wordArray.shift());
     wordArray.push(wordArray.shift());
   }
-  //checking for three consonants
-  else if (wordArray[2] !="a" && wordArray[2] !="e" && wordArray[2] !="i" && wordArray[2] !="o" && wordArray[2] !="u" && wordArray[1] !="a" && wordArray[1] !="e" && wordArray[1] !="i" && wordArray[1] !="o" && wordArray[1] !="u" && wordArray[0] != "a" && wordArray[0] != "e" && wordArray[0] != "i" && wordArray[0] != "o" && wordArray[0] != "u") {
+
+  //checking for 3 consonants
+  else if (!checkIfVowel(wordArray[0]) && !checkIfVowel(wordArray[1]) && !checkIfVowel(wordArray[2])) {
     wordArray.push(wordArray.shift());
     wordArray.push(wordArray.shift());
     wordArray.push(wordArray.shift());
   }
+
   //checking for two consonants
-  else if (wordArray[1] !="a" && wordArray[1] !="e" && wordArray[1] !="i" && wordArray[1] !="o" && wordArray[1] !="u" && wordArray[0] != "a" && wordArray[0] != "e" && wordArray[0] != "i" && wordArray[0] != "o" && wordArray[0] != "u") {
+  else if (!checkIfVowel(wordArray[0]) && !checkIfVowel(wordArray[1])) {
     wordArray.push(wordArray.shift());
     wordArray.push(wordArray.shift());
   }
 //checking for one consonant
-  else if (wordArray[0] != "a" && wordArray[0] != "e" && wordArray[0] != "i" && wordArray[0] != "o" && wordArray[0] != "u") {
+  else if (!checkIfVowel(wordArray[0])) {
     wordArray.push(wordArray.shift());
   }
 //all words get this treatment
@@ -35,12 +51,11 @@ var wordTranslator = function(word) {
     result.push(wordArray.join(""));
 };
 
+//Run multiple words through translator function
 var multiWord = function(word){
-  var multiWordArray =  word.split(" ");
-  for (i=0; i<multiWordArray.length; i++) {
-    wordTranslator(multiWordArray[i]);
-  }
-  result.join(" ");
+  result = [];
+  word.split(" ").forEach(wordTranslator);
+  result = result.join(" ");
 };
 
 // Pig Latin User interface (or front-end) logic:
