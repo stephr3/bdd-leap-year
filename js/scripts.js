@@ -23,32 +23,24 @@ var checkIfVowel = function (letter) {
 var wordTranslator = function(word) {
 
   var wordArray = word.split("");
-
   //checking for words that begin with "qu"
   if (wordArray[0] === "q" && wordArray[1] === "u") {
     wordArray.push(wordArray.shift());
     wordArray.push(wordArray.shift());
   }
 
-  //checking for 3 consonants
-  else if (!checkIfVowel(wordArray[0]) && !checkIfVowel(wordArray[1]) && !checkIfVowel(wordArray[2])) {
-    wordArray.push(wordArray.shift());
-    wordArray.push(wordArray.shift());
-    wordArray.push(wordArray.shift());
+  //checking for consonants
+  for (var i=0; i<3; i++) {
+    if (!checkIfVowel(wordArray[0])) {
+      wordArray.push(wordArray.shift());
+    } else {
+      i<3;
+    }
   }
 
-  //checking for two consonants
-  else if (!checkIfVowel(wordArray[0]) && !checkIfVowel(wordArray[1])) {
-    wordArray.push(wordArray.shift());
-    wordArray.push(wordArray.shift());
-  }
-//checking for one consonant
-  else if (!checkIfVowel(wordArray[0])) {
-    wordArray.push(wordArray.shift());
-  }
 //all words get this treatment
-    wordArray.push("ay");
-    result.push(wordArray.join(""));
+  wordArray.push("ay");
+  result.push(wordArray.join(""));
 };
 
 //Run multiple words through translator function

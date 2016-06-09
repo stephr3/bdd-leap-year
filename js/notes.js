@@ -14,11 +14,3 @@ var wordTranslator = function (wordArray) {
   wordArray.push("a", "y");
   result = wordArray.join("");
 };
-
-for (i=0; i<3; i++) {
-  if (!checkIfVowel(wordArray[i])) {
-    wordArray.push(wordArray.shift());
-    console.log(wordArray);
-    continue;
-  }
-}
