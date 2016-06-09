@@ -19,6 +19,15 @@ var checkIfVowel = function (letter) {
   }
 };
 
+//rearrange the array to translate into pig latin
+var rearrange = function (wordArray, arrayLength) {
+  if (!checkIfVowel(wordArray[0]) && arrayLength > 1) {
+    wordArray.push(wordArray.shift());
+    return true;
+  } else {
+    return false;
+  }
+};
 //Translate a single word to pig latin
 var wordTranslator = function(word) {
 
@@ -29,14 +38,12 @@ var wordTranslator = function(word) {
     wordArray.push(wordArray.shift());
   }
 
+var wordArrayLength = parseInt(wordArray.length);
   //checking for consonants
-  for (var i=0; i<3; i++) {
-    if (!checkIfVowel(wordArray[0])) {
-      wordArray.push(wordArray.shift());
-    } else {
-      i<3;
-    }
+  while(rearrange(wordArray, wordArrayLength)){
+    --wordArrayLength
   }
+
 
 //all words get this treatment
   wordArray.push("ay");
