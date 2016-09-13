@@ -1,11 +1,3 @@
-# H1 Arrays & Looping
-
-[Home] (../index.html)
-[Leap Year] (../leap-year.html)
-[Pig Latin] (../pig-latin.html)
-[Bases] (../bases.html)
-[ReadMe] (../README.md)
-
 # _Simple Arrays & Looping Applications_
 
 #### _Arrays and Looping Applications: Leap Year, Pig Latin, June 8, 2016 _
@@ -69,10 +61,6 @@ The program should keep punctuation in place
 ## Setup/Installation Requirements
 
 * _These applications run in most web browsers that support JavaScript_
-
-## Known Bugs
-
-_{Are there issues that have not yet been resolved that you want to let users know you know?  Outline any issues that would impact use of your application.  Share any workarounds that are in place. }_
 
 ## Support and contact details
 
